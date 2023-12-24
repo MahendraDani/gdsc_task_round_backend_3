@@ -12,7 +12,7 @@ export const createUser = async ({
   email,
   id,
 }: CreateUserProps) => {
-  return await prisma.user.create({
+  const data = await prisma.user.create({
     data: {
       id,
       firstName,
@@ -20,4 +20,6 @@ export const createUser = async ({
       email,
     },
   });
+  await prisma.$disconnect();
+  return data;
 };

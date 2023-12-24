@@ -13,7 +13,7 @@ export const createTodo = async ({
   completed,
   userId,
 }: CreateTodoProps) => {
-  return await prisma.todo.create({
+  const data = await prisma.todo.create({
     data: {
       title,
       description,
@@ -21,4 +21,6 @@ export const createTodo = async ({
       userId,
     },
   });
+  await prisma.$disconnect();
+  return data;
 };

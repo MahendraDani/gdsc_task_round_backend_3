@@ -6,5 +6,6 @@ export const findUser = async (id: string) => {
       id,
     },
   });
+  await prisma.$disconnect();
   return data;
 };

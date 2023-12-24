@@ -24,14 +24,14 @@ export default async function ProtectedPage() {
   // Check if the user is already in table
   const isExistingUser = await findUser(userId!);
   if (!isExistingUser) {
-    const response = await axios.post("http://localhost:3000/api/user", {
+    const response = await axios.post(`${process.env.BASE_API_URL}/user`, {
       firstName,
       lastName,
       email,
       id: userId
     })
   }
-  const todosFetchResponse = await axios.get(`http://localhost:3000/api/user/todo/${userId}`);
+  const todosFetchResponse = await axios.get(`${process.env.BASE_API_URL}/user/todo/${userId}`);
   const todos = todosFetchResponse.data.todos;
   return (
     <div>
@@ -40,9 +40,13 @@ export default async function ProtectedPage() {
         <LogoutLink>Logout</LogoutLink>
       </div>
       {/* TODO : Handle case when the user has no todos by giving a button to create todo, else map todos and show to user */}
-      <pre>
-        {JSON.stringify(todos, null, 2)}
-      </pre>
+      {
+        todos ?
+          <pre>
+            {JSON.stringify(todos, null, 2)}
+          </pre> :
+          <p>Add a button here to create todo</p>
+      }
     </div>
   )
 }
