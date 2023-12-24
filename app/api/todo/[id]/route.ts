@@ -1,9 +1,15 @@
+import { getTodoByTodoId } from "@/services/todo/getTodoByTodoId";
 import { NextResponse } from "next/server";
 
 // @service : getTodoById
 export const GET = async (req: Request) => {
   const id = req.url.split("todo/")[1];
-  return NextResponse.json({ message: "All routes based on todo id", id });
+  const todo = await getTodoByTodoId(id);
+  return NextResponse.json({
+    message: "All routes based on todo id",
+    todo,
+    id,
+  });
 };
 
 // @service : updateTodoById

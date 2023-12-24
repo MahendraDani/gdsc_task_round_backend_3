@@ -1,17 +1,19 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { getAllTodos } from "@/services/todo/getAllTodos";
+import { createTodo } from "@/services/todo/createTodo";
 
-// @service : getAllTodos
-export const GET = async (req: Request) => {
-  // const todos = await prisma.todo.findMany();
-  // return NextResponse.json(
-  //   { message: "Api route working", todo: todos },
-  //   { status: 200, headers: { "content-type": "application/json" } }
-  // );
-  return NextResponse.json({ message: "Return all todos" });
+export const GET = async () => {
+  const todos = await getAllTodos();
+  return NextResponse.json({ todo: todos, message: "Get all todos from here" });
 };
 
-//@service : create a new todo
-export const POST = async () => {
-  return NextResponse.json({ message: "Create a new todo from here" });
+export const POST = async (req: Request) => {
+  const { title, description, completed, userId } = await req.json();
+  const todo = await createTodo({ title, description, completed, userId });
+  return NextResponse.json({ todo }, { status: 201 });
 };
+
+/*
+userId, must be of the current user which should be exracted from users table
+Better to put in url directly
+*/
