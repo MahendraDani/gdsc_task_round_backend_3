@@ -5,10 +5,10 @@ import axios from "axios";
 import { redirect } from "next/navigation";
 
 export default async function ProtectedPage() {
-  // Fetch user details from kindle
-  // Check if user exists with kindle id in userss table
-  // If user doesn't exits insert it in users table
-  // Feetch all todos of an user
+  // Fetch user details from kindle --done
+  // Check if user exists with kindle id in userss table --done
+  // If user doesn't exits insert it in users table --done
+  // Feetch all todos of an user --PENDING
 
   const { getUser, isAuthenticated } = getKindeServerSession();
   const isAuthed = await isAuthenticated();
