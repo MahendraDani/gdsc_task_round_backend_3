@@ -31,12 +31,18 @@ export default async function ProtectedPage() {
       id: userId
     })
   }
+  const todosFetchResponse = await axios.get(`http://localhost:3000/api/user/todo/${userId}`);
+  const todos = todosFetchResponse.data.todos;
   return (
     <div>
       This is protected
       <div>
         <LogoutLink>Logout</LogoutLink>
       </div>
+      {/* TODO : Handle case when the user has no todos by giving a button to create todo, else map todos and show to user */}
+      <pre>
+        {JSON.stringify(todos, null, 2)}
+      </pre>
     </div>
   )
 }
