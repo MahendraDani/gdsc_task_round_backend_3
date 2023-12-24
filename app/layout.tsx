@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Theme accentColor='crimson' appearance='light' radius='full'>
+        <Theme accentColor='crimson' appearance='dark' radius='full'>
           {children}
         </Theme>
       </body>
