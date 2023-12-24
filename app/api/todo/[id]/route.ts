@@ -1,8 +1,9 @@
+import { deleteTodo } from "@/services/todo/deleteTodo";
 import { getTodoByTodoId } from "@/services/todo/getTodoByTodoId";
 import { updateTodo } from "@/services/todo/updateTodo";
 import { NextResponse } from "next/server";
 
-// @service : getTodoById
+// Get a todo by its id
 export const GET = async (req: Request) => {
   const id = req.url.split("todo/")[1];
   const todo = await getTodoByTodoId(id);
@@ -12,7 +13,7 @@ export const GET = async (req: Request) => {
   });
 };
 
-// @service : updateTodoById
+// Update a todo by its id
 export const PUT = async (req: Request) => {
   const id = req.url.split("todo/")[1];
   const isExistingTodo = await getTodoByTodoId(id);
@@ -24,7 +25,13 @@ export const PUT = async (req: Request) => {
   return NextResponse.json({ message: "Todo updated successfully", todo });
 };
 
-// @service : deleteTodoById
-export const DELETE = async () => {
-  return NextResponse.json({ message: " Delete a todo by its id" });
+// Delete a todo by its id
+export const DELETE = async (req: Request) => {
+  const id = req.url.split("todo/")[1];
+  const isExistingTodo = await getTodoByTodoId(id);
+  if (!isExistingTodo) {
+    return NextResponse.json({ message: "Todo not found" }, { status: 404 });
+  }
+  await deleteTodo(id);
+  return NextResponse.json({ message: "Todo deleted successfully" });
 };
