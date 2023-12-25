@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 export const GET = async (req: Request) => {
   const userId = req.url.split("todo/")[1];
   const todos = await GetTodosOfAllUser(userId);
-  if (todos.length === 0) {
-    return NextResponse.json({ message: "Not found" }, { status: 404 });
-  }
+  // if (todos.length === 0) {
+  //   return NextResponse.json({ message: "Not found" }, { status: 404 });
+  // }
   return NextResponse.json({ todos });
 };
