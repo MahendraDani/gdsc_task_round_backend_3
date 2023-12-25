@@ -64,9 +64,9 @@ export default async function ProtectedPage() {
                   <form action={createTodoAction}>
                     <CreateTodoForm userId={userId!} />
                   </form>
-                </Flex> : incompleteTodos.map((todo: Todo) => {
+                </Flex> : incompleteTodos.reverse().map((todo: Todo) => {
                   return (
-                    <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} />
+                    <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
                   )
                 })}
               </Flex>
@@ -81,9 +81,9 @@ export default async function ProtectedPage() {
                   <form action={createTodoAction}>
                     <CreateTodoForm userId={userId!} />
                   </form>
-                </Flex> : completedTodos.map((todo: Todo) => {
+                </Flex> : completedTodos.reverse().map((todo: Todo) => {
                   return (
-                    <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} />
+                    <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
                   )
                 })}
               </Flex>

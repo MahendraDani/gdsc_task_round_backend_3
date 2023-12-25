@@ -10,7 +10,7 @@ interface TodoCardProps {
   title: string;
   id: string;
   description: string;
-  completed: boolean
+  completed: string;
 }
 
 export const TodoCard = ({ title, description, completed, id }: TodoCardProps) => {

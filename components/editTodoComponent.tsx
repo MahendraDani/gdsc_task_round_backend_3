@@ -6,7 +6,7 @@ interface EditTodoComponentProps {
   id: string;
   title: string;
   description: string;
-  completed: boolean;
+  completed: string;
 }
 export const EditTodoComponent = ({ id, title, description, completed }: EditTodoComponentProps) => {
   return (
@@ -34,7 +34,7 @@ export const EditTodoComponent = ({ id, title, description, completed }: EditTod
             <Flex align='start' justify='between' gap='1' direction='column' className="w-full">
               <Text as="label" size={'2'} weight={'light'}>Status</Text>
               <div className="w-full">
-                <SelectRoot name="completed" defaultValue={completed ? "done" : "todo"} >
+                <SelectRoot name="completed" defaultValue={completed} >
                   <SelectTrigger radius="large" className="w-full" />
                   <SelectContent variant="soft">
                     <SelectGroup>
