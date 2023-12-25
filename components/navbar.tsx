@@ -1,7 +1,8 @@
 "use server";
-import { LoginLink, LogoutLink, RegisterLink, getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
+import { LoginLink, RegisterLink, getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { Box, Button, Container, Flex, Heading } from "@radix-ui/themes"
 import Link from "next/link"
+import { LogoutAlertDialog } from "./LogoutAlertDialog";
 
 export const Navbar = async () => {
   const { isAuthenticated } = getKindeServerSession()
@@ -22,9 +23,7 @@ export const Navbar = async () => {
             <Button variant="soft">
               <RegisterLink>Register</RegisterLink>
             </Button>
-          </Flex> : <Button value='surface'>
-            <LogoutLink>Logout</LogoutLink>
-          </Button>
+          </Flex> : <LogoutAlertDialog />
         }
       </Flex>
     </Container>
