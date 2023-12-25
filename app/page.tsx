@@ -17,15 +17,15 @@ export default async function Home() {
         <div className='w-full flex justify-center items-center gap-8 flex-col p-4 sm:p-6 mt-8 md:mt-16'>
           <div className='max-w-[90%] text-center mt-8'>
             <div className='sm:hidden'>
-              <Heading weight={'bold'} size={'8'} highContrast color='pink'>Unlock Your Productivity Potential, Your To-Dos, Your Rules, Your Victory!</Heading>
+              <Heading weight={'bold'} size={'8'} highContrast color='pink'>{"Unlock Your Productivity Potential, Your To-Dos, Your Rules, Your Victory!"}</Heading>
             </div>
             <div className='hidden sm:block'>
-              <Heading weight={'bold'} size={'9'} highContrast color='pink'>Unlock Your Productivity Potential, Your To-Dos, Your Rules, Your Victory!</Heading>
+              <Heading weight={'bold'} size={'9'} highContrast color='pink'>{"Unlock Your Productivity Potential, Your To-Dos, Your Rules, Your Victory!"}</Heading>
             </div>
           </div>
           <div className='max-w-[80%] text-center mt-2'>
             <Text as='p' size={'5'} color='gray'>
-              Elevate your day with our intuitive todo app — where dreams meet deadlines. Seamlessly organize, conquer, and celebrate your achievements, one task at a time.
+              {"Elevate your day with our intuitive todo app — where dreams meet deadlines. Seamlessly organize, conquer, and celebrate your achievements, one task at a time."}
             </Text>
           </div>
           <div>
