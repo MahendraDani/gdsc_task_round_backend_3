@@ -3,10 +3,12 @@ import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { LogoutLink, getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import axios from "axios";
 import { redirect } from "next/navigation";
-import { TabsRoot, TabsTrigger, TabsContent, TabsList, Box, Text, Container, Grid, Flex, Card } from "@radix-ui/themes";
+import { TabsRoot, TabsTrigger, TabsContent, TabsList, Box, Container, Flex } from "@radix-ui/themes";
 import { Todo } from "@/lib/types";
 import Link from "next/link";
 import { TodoCard } from "@/components/todoCard";
+import { createTodoAction } from "@/actions/createTodoAction";
+import { CreateTodoForm } from "@/components/createTodoForm";
 
 export default async function ProtectedPage() {
   // Fetch user details from kindle --done
@@ -39,6 +41,8 @@ export default async function ProtectedPage() {
   const todos = todosFetchResponse.data.todos;
   const completedTodos = todos.filter((todo: Todo) => todo.completed)
   const incompleteTodos = todos.filter((todo: Todo) => !todo.completed)
+
+
   return (
     <div>
       <Container>
@@ -56,7 +60,7 @@ export default async function ProtectedPage() {
                 initial: "column",
                 sm: 'row'
               }} gap='4' wrap='wrap' align='center'>
-                {completedTodos.map((todo: Todo) => {
+                {incompleteTodos.map((todo: Todo) => {
                   return (
                     <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} />
                   )
@@ -69,7 +73,7 @@ export default async function ProtectedPage() {
                 initial: "column",
                 sm: 'row'
               }} gap='4' wrap='wrap' align='center'>
-                {incompleteTodos.map((todo: Todo) => {
+                {completedTodos.map((todo: Todo) => {
                   return (
                     <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} />
                   )
@@ -77,7 +81,12 @@ export default async function ProtectedPage() {
               </Flex>
             </TabsContent>
             <TabsContent value="New">
-              Create new todo from here
+              <Flex align='center' justify='center' direction='column' mt={'9'} className="">
+                <form action={createTodoAction}>
+                  <CreateTodoForm userId={userId!} />
+                </form>
+
+              </Flex>
             </TabsContent>
           </Box>
         </TabsRoot>
