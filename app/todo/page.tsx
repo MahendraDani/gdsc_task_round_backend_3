@@ -60,7 +60,11 @@ export default async function ProtectedPage() {
                 initial: "column",
                 sm: 'row'
               }} gap='4' wrap='wrap' align='center'>
-                {incompleteTodos.map((todo: Todo) => {
+                {incompleteTodos.length === 0 ? <Flex align='center' justify='center' direction='column' mt={'9'} className="">
+                  <form action={createTodoAction}>
+                    <CreateTodoForm userId={userId!} />
+                  </form>
+                </Flex> : incompleteTodos.map((todo: Todo) => {
                   return (
                     <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} />
                   )
@@ -73,7 +77,11 @@ export default async function ProtectedPage() {
                 initial: "column",
                 sm: 'row'
               }} gap='4' wrap='wrap' align='center'>
-                {completedTodos.map((todo: Todo) => {
+                {completedTodos.length === 0 ? <Flex align='center' justify='center' direction='column' mt={'9'} className="">
+                  <form action={createTodoAction}>
+                    <CreateTodoForm userId={userId!} />
+                  </form>
+                </Flex> : completedTodos.map((todo: Todo) => {
                   return (
                     <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} />
                   )
@@ -85,7 +93,6 @@ export default async function ProtectedPage() {
                 <form action={createTodoAction}>
                   <CreateTodoForm userId={userId!} />
                 </form>
-
               </Flex>
             </TabsContent>
           </Box>

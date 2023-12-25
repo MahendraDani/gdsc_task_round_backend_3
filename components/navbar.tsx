@@ -22,7 +22,7 @@ export const Navbar = async () => {
             <Button variant="soft">
               <RegisterLink>Register</RegisterLink>
             </Button>
-          </Flex> : <Button value='soft'>
+          </Flex> : <Button value='surface'>
             <LogoutLink>Logout</LogoutLink>
           </Button>
         }
