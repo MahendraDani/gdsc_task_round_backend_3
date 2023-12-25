@@ -20,7 +20,7 @@ export const EditTodoComponent = ({ id, title, description, completed }: EditTod
           Make changes to your todo.
         </DialogDescription>
         <form action={EditTodoAction}>
-          <Flex align='start' justify='between' gap='4' direction='column' className="sm:min-w-[25rem] min-w-[20rem] rounded-md">
+          <Flex align='start' justify='between' gap='4' direction='column' className="sm:min-w-[25rem] min-w-[18rem] rounded-md">
             <Flex align='start' justify='between' gap='1' direction='column' className="w-full">
               <Text as="label" size={'2'} weight='light'>Title</Text>
               <TextFieldRoot className="w-full">
