@@ -3,8 +3,10 @@ import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { LogoutLink, getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import axios from "axios";
 import { redirect } from "next/navigation";
-import { TabsRoot, TabsTrigger, TabsContent, TabsList, Box, Text, Container } from "@radix-ui/themes";
+import { TabsRoot, TabsTrigger, TabsContent, TabsList, Box, Text, Container, Grid, Flex, Card } from "@radix-ui/themes";
 import { Todo } from "@/lib/types";
+import Link from "next/link";
+import { TodoCard } from "@/components/todoCard";
 
 export default async function ProtectedPage() {
   // Fetch user details from kindle --done
@@ -48,11 +50,30 @@ export default async function ProtectedPage() {
 
           <Box px="4" pt="3" pb="2">
             <TabsContent value="Tasks">
-              <pre>{JSON.stringify(completedTodos, null, 2)}</pre>
+              <Flex direction={{
+                initial: "column",
+                sm: 'row'
+              }} gap='4' wrap='wrap' align='center'>
+                {completedTodos.map((todo: Todo) => {
+                  return (
+                    <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} />
+                  )
+                })}
+              </Flex>
+              {/* <pre>{JSON.stringify(completedTodos, null, 2)}</pre> */}
             </TabsContent>
 
             <TabsContent value="Done">
-              <pre>{JSON.stringify(incompleteTodos, null, 2)}</pre>
+              <Flex direction={{
+                initial: "column",
+                sm: 'row'
+              }} gap='4' wrap='wrap' align='center'>
+                {incompleteTodos.map((todo: Todo) => {
+                  return (
+                    <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} />
+                  )
+                })}
+              </Flex>
             </TabsContent>
           </Box>
         </TabsRoot>
