@@ -10,9 +10,9 @@ interface TodoCardProps {
 export const TodoCard = ({ title, description, id }: TodoCardProps) => {
   return (
     <div className="w-[21rem] overflow-hidden">
-      <Card asChild  >
+      <Card asChild className="p-1">
         <Link href="/todo">
-          <Text as="div" size="3" weight="bold">
+          <Text as="div" size="3" weight="bold" mb='1'>
             {title}
           </Text>
           <Text as="div" color="gray" size="2">
