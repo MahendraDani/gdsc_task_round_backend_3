@@ -4,14 +4,16 @@ import { Button, Card, Flex, Text, AlertDialogRoot, AlertDialogContent, AlertDia
 import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons"
 import { DeleteTodoComponent } from "./deleteTodoComponent";
 import { DeleteTodoAction } from "@/actions/deleteTodoAction";
+import { EditTodoComponent } from "./editTodoComponent";
 
 interface TodoCardProps {
   title: string;
   id: string;
   description: string;
+  completed: boolean
 }
 
-export const TodoCard = ({ title, description, id }: TodoCardProps) => {
+export const TodoCard = ({ title, description, completed, id }: TodoCardProps) => {
   return (
     <div className="w-[21rem] overflow-hidden">
       <Card asChild className="p-1">
@@ -21,8 +23,7 @@ export const TodoCard = ({ title, description, id }: TodoCardProps) => {
               {title}
             </Text>
             <Flex justify={'between'} align={'center'} gap='3'>
-
-              <button><Pencil1Icon /></button>
+              <EditTodoComponent id={id} title={title} description={description} completed={completed} />
               <DeleteTodoComponent id={id} />
             </Flex>
           </Flex>
