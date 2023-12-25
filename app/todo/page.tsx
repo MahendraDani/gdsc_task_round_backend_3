@@ -3,6 +3,8 @@ import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { LogoutLink, getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import axios from "axios";
 import { redirect } from "next/navigation";
+import { TabsRoot, TabsTrigger, TabsContent, TabsList, Box, Text, Container } from "@radix-ui/themes";
+import { Todo } from "@/lib/types";
 
 export default async function ProtectedPage() {
   // Fetch user details from kindle --done
@@ -33,16 +35,28 @@ export default async function ProtectedPage() {
   }
   const todosFetchResponse = await axios.get(`${process.env.BASE_API_URL}/user/todo/${userId}`);
   const todos = todosFetchResponse.data.todos;
+  const completedTodos = todos.filter((todo: Todo) => todo.completed)
+  const incompleteTodos = todos.filter((todo: Todo) => !todo.completed)
   return (
     <div>
-      {/* TODO : Handle case when the user has no todos by giving a button to create todo, else map todos and show to user */}
-      {
-        todos ?
-          <pre>
-            {JSON.stringify(todos, null, 2)}
-          </pre> :
-          <p>Add a button here to create todo</p>
-      }
+      <Container>
+        <TabsRoot defaultValue="Tasks">
+          <TabsList>
+            <TabsTrigger value="Tasks">Tasks</TabsTrigger>
+            <TabsTrigger value="Done">Done</TabsTrigger>
+          </TabsList>
+
+          <Box px="4" pt="3" pb="2">
+            <TabsContent value="Tasks">
+              <pre>{JSON.stringify(completedTodos, null, 2)}</pre>
+            </TabsContent>
+
+            <TabsContent value="Done">
+              <pre>{JSON.stringify(incompleteTodos, null, 2)}</pre>
+            </TabsContent>
+          </Box>
+        </TabsRoot>
+      </Container>
     </div>
   )
 }
