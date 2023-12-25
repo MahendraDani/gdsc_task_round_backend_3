@@ -5,7 +5,7 @@ export const LogoutAlertDialog = () => {
   return (
     <AlertDialogRoot>
       <AlertDialogTrigger>
-        <Button value='surface' type="button" className="cursour-pointer">
+        <Button value='surface'>
           Logout
         </Button>
       </AlertDialogTrigger>
