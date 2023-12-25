@@ -12,11 +12,6 @@ import { CreateTodoForm } from "@/components/createTodoForm";
 import { Navbar } from "@/components/navbar";
 
 export default async function ProtectedPage() {
-  // Fetch user details from kindle --done
-  // Check if user exists with kindle id in userss table --done
-  // If user doesn't exits insert it in users table --done
-  // Feetch all todos of an user --PENDING
-
   const { getUser, isAuthenticated } = getKindeServerSession();
   const isAuthed = await isAuthenticated();
 
