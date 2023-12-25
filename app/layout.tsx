@@ -4,6 +4,7 @@ import './globals.css'
 import '@radix-ui/themes/styles.css'
 import { Box, Theme } from '@radix-ui/themes'
 import { Navbar } from '@/components/navbar'
+import { Footer } from '@/components/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={`${inter.className} w-full`}>
         <Theme accentColor='crimson' appearance='light' radius='full'>
           <Navbar />
-          <div className='py-8 mt-8 md:mt-16 min-h-screen bg-gradient-to-br from-teal-50 via-yellow-50 to-purple-100'>
+          <div className='py-8 mt-8 md:mt-16 min-h-[48rem] bg-gradient-to-br from-teal-50 via-yellow-50 to-purple-100'>
             {children}
           </div>
         </Theme>
