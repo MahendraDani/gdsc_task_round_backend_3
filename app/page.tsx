@@ -1,7 +1,13 @@
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { Button, Heading } from '@radix-ui/themes'
-import { RegisterLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { redirect } from 'next/navigation';
 
-export default function Home() {
+export default async function Home() {
+  const { isAuthenticated } = getKindeServerSession()
+  const isAuthed = await isAuthenticated();
+  if (isAuthed) {
+    redirect("/todo")
+  }
   return (
     <main>
       <p>This is landing page</p>
