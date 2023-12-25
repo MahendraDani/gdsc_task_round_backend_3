@@ -9,6 +9,7 @@ import Link from "next/link";
 import { TodoCard } from "@/components/todoCard";
 import { createTodoAction } from "@/actions/createTodoAction";
 import { CreateTodoForm } from "@/components/createTodoForm";
+import { Navbar } from "@/components/navbar";
 
 export default async function ProtectedPage() {
   // Fetch user details from kindle --done

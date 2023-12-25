@@ -22,9 +22,9 @@ export default function RootLayout({
       <body className={`${inter.className} w-full`}>
         <Theme accentColor='crimson' appearance='light' radius='full'>
           <Navbar />
-          <Box mt='9'>
+          <div className='py-8 sm:py-16'>
             {children}
-          </Box>
+          </div>
         </Theme>
       </body>
     </html>
