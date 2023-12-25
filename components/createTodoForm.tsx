@@ -2,7 +2,7 @@ import { Text, Flex, TextArea, TextFieldRoot, TextFieldInput, Heading, SelectRoo
 
 export const CreateTodoForm = ({ userId }: { userId: string }) => {
   return (
-    <Flex align='center' justify='between' gap='4' direction='column' p={'4'} className="sm:min-w-[25rem] min-w-[20rem] border-2 border-black/30 rounded-md">
+    <Flex align='center' justify='between' gap='4' direction='column' p={'4'} className="sm:min-w-[25rem] min-w-[20rem] border-2 border-[#6D2545] rounded-lg">
       <Heading color="crimson">Create a new task</Heading>
       <Flex align='start' justify='between' gap='1' direction='column' className="w-full">
         <Text as="label" weight='light'>Title</Text>
