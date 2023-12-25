@@ -46,6 +46,8 @@ export default async function ProtectedPage() {
           <TabsList>
             <TabsTrigger value="Tasks">Tasks</TabsTrigger>
             <TabsTrigger value="Done">Done</TabsTrigger>
+            <TabsTrigger value="New">New</TabsTrigger>
+
           </TabsList>
 
           <Box px="4" pt="3" pb="2">
@@ -60,7 +62,6 @@ export default async function ProtectedPage() {
                   )
                 })}
               </Flex>
-              {/* <pre>{JSON.stringify(completedTodos, null, 2)}</pre> */}
             </TabsContent>
 
             <TabsContent value="Done">
@@ -75,8 +76,12 @@ export default async function ProtectedPage() {
                 })}
               </Flex>
             </TabsContent>
+            <TabsContent value="New">
+              Create new todo from here
+            </TabsContent>
           </Box>
         </TabsRoot>
+
       </Container>
     </div>
   )
