@@ -16,7 +16,7 @@ interface TodoCardProps {
 export const TodoCard = ({ title, description, completed, id }: TodoCardProps) => {
   return (
     <div className="w-[21rem] overflow-hidden">
-      <Card asChild className="p-1">
+      <Card asChild className="p-1 ">
         <div>
           <Flex justify={'between'} align={'center'} className="w-full">
             <Text as="div" size="3" weight="bold" mb='1'>

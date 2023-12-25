@@ -63,7 +63,7 @@ export default async function ProtectedPage() {
 
           </TabsList>
 
-          <Box px="4" pt="3" pb="2">
+          <Box px="4" pt="3" pb="2" mt='5'>
             <TabsContent value="Tasks">
               <Flex direction={{
                 initial: "column",

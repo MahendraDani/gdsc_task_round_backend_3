@@ -8,11 +8,11 @@ export const Navbar = async () => {
   const { isAuthenticated } = getKindeServerSession()
   const isAuthed = await isAuthenticated()
   return (
-    <Container position='fixed' top='0' right='0' left='0' p='4' className="bg-red-50/90">
+    <Container position='fixed' top='0' right='0' left='0' p='4' className="bg-gradient-to-r from-amber-50 via-amber-100 to-amber-50 z-10">
       <Flex justify='between'>
         <Box>
           <Link href={!isAuthed ? "/" : "/todo"} >
-            <Heading className="cursor-pointer">Tododo</Heading>
+            <Heading color="crimson" className="cursor-pointer">Tododo</Heading>
           </Link>
         </Box>
         {
