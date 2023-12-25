@@ -65,7 +65,7 @@ export default async function ProtectedPage() {
                 sm: 'row'
               }} gap='4' wrap='wrap' align='center'>
                 {incompleteTodos.length === 0 ? <Flex align='center' justify='center' direction='column' className="">
-                  <Heading>It seems that you don't have any todos yet! Please create todos first</Heading>
+                  <Heading>{"It seems that you don't have any todos yet! Please create todos first"}</Heading>
                 </Flex> : incompleteTodos.reverse().map((todo: Todo) => {
                   return (
                     <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
@@ -80,7 +80,7 @@ export default async function ProtectedPage() {
                 sm: 'row'
               }} gap='4' wrap='wrap' align='center'>
                 {completedTodos.length === 0 ? <Flex align='center' justify='center' direction='column' className="">
-                  <Heading>It seems that you don't have any todos yet! Please create todos first</Heading>
+                  <Heading>{"It seems that you don't have any todos yet! Please create todos first"}</Heading>
                 </Flex> : completedTodos.reverse().map((todo: Todo) => {
                   return (
                     <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
