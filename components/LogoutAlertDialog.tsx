@@ -5,14 +5,14 @@ export const LogoutAlertDialog = () => {
   return (
     <AlertDialogRoot>
       <AlertDialogTrigger>
-        <Button value='surface'>
+        <Button variant='surface'>
           Logout
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent style={{ maxWidth: 450 }}>
         <AlertDialogTitle>Logout</AlertDialogTitle>
         <AlertDialogDescription size="2">
-          Do you really want to logout
+          {"Do you really want to logout?"}
         </AlertDialogDescription>
 
         <Flex gap="3" mt="4" justify="end">
