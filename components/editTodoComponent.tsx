@@ -50,10 +50,7 @@ export const EditTodoComponent = ({ id, title, description, completed }: EditTod
             </Flex>
             <Flex className="w-full" justify={'end'} align={'end'} gap={'3'} >
               <DialogClose>
-                <Button variant="soft" color="gray">Cancel</Button>
-              </DialogClose>
-              <DialogClose>
-                <Button variant="solid" type="submit" >Edit</Button>
+                <Button variant="solid">Edit</Button>
               </DialogClose>
             </Flex>
           </Flex>
