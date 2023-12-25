@@ -22,7 +22,7 @@ export const LogoutAlertDialog = () => {
             </Button>
           </AlertDialogCancel>
           <AlertDialogAction>
-            <Button variant="solid" color="red" className="cursor-pointer">
+            <Button variant="surface">
               <LogoutLink>Logout</LogoutLink>
             </Button>
 
