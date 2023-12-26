@@ -1,5 +1,5 @@
 import { Footer } from '@/components/footer';
-import { LoginLink, getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { LoginLink, RegisterLink, getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { AspectRatio, Badge, Button, Container, Heading, Section, Text } from '@radix-ui/themes'
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
@@ -30,7 +30,7 @@ export default async function Home() {
           </div>
           <div>
             <Button variant='soft' size={'3'}>
-              <LoginLink>Get Started</LoginLink>
+              <RegisterLink>Get Started</RegisterLink>
             </Button>
           </div>
         </div>
