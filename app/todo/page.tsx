@@ -1,15 +1,13 @@
 import { findUser } from "@/services/user/findUser";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
-import { LogoutLink, getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { TabsRoot, TabsTrigger, TabsContent, TabsList, Box, Container, Flex, Heading } from "@radix-ui/themes";
 import { Todo } from "@/lib/types";
-import Link from "next/link";
 import { TodoCard } from "@/components/todoCard";
 import { createTodoAction } from "@/actions/createTodoAction";
 import { CreateTodoForm } from "@/components/createTodoForm";
-import { Navbar } from "@/components/navbar";
 
 export default async function ProtectedPage() {
   const { getUser, isAuthenticated } = getKindeServerSession();
@@ -31,9 +29,11 @@ export default async function ProtectedPage() {
       lastName,
       email,
       id: userId
-    })
+    },
+    )
   }
-  const todosFetchResponse = await axios.get(`${process.env.BASE_API_URL}/user/todo/${userId}`);
+  const todosFetchResponse = await axios.get(`${process.env.BASE_API_URL}/user/todo/${userId}`,
+  );
   let completedTodos;
   let incompleteTodos;
 
