@@ -1,4 +1,5 @@
 import axios from "axios";
+import { revalidatePath } from "next/cache";
 
 export const EditTodoAction = async (formData: FormData) => {
   "use server";
@@ -11,5 +12,6 @@ export const EditTodoAction = async (formData: FormData) => {
       completed: completedBool,
     }
   );
+  revalidatePath("/todo");
   console.log("Todo updated successfully");
 };

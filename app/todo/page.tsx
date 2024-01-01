@@ -49,6 +49,7 @@ export default async function ProtectedPage() {
 
   return (
     <div>
+
       <Container>
         <TabsRoot defaultValue="Tasks">
           <TabsList>
@@ -59,6 +60,7 @@ export default async function ProtectedPage() {
           </TabsList>
 
           <Box px="4" pt="3" pb="2" mt='5'>
+
             <TabsContent value="Tasks">
               <Flex direction={{
                 initial: "column",
@@ -73,6 +75,7 @@ export default async function ProtectedPage() {
                 })}
               </Flex>
             </TabsContent>
+
 
             <TabsContent value="Done">
               <Flex direction={{

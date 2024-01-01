@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export const createTodoAction = async (formData: FormData) => {
   "use server";
@@ -12,5 +13,6 @@ export const createTodoAction = async (formData: FormData) => {
     completed: completedBool,
     userId: formData.get("userId"),
   });
+  revalidatePath("/todo");
   console.log("Todo created successfully");
 };
