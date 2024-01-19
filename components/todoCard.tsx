@@ -11,16 +11,12 @@ interface TodoCardProps {
   id: string;
   description: string;
   completed: string;
-  created_at: Date;
 }
 
-export const TodoCard = ({ title, description, completed, id, created_at }: TodoCardProps) => {
-  const date = new Date(created_at);
-  const time = date.getHours();
-
+export const TodoCard = ({ title, description, completed, id }: TodoCardProps) => {
   return (
     <div className="w-[18rem] sm:w-[21rem]  overflow-hidden">
-      <Card asChild className="p-1">
+      <Card asChild className="p-1 ">
         <div>
           <Flex justify={'between'} align={'center'} className="w-full">
             <Text as="div" size="3" weight="bold" mb='1'>
@@ -34,14 +30,6 @@ export const TodoCard = ({ title, description, completed, id, created_at }: Todo
           <Text as="div" color="gray" size="2">
             {description.length > 40 ? `${description.slice(0, 40)}...` : description}
           </Text>
-          <Flex direction={"row"} justify={"between"} align={"center"} gap={'2'} mt={'1'}>
-            <Text as="div" color="gray" size="1">
-              {date.toLocaleDateString()}
-            </Text>
-            <Text as="div" color="gray" size="1">
-              {date.toLocaleTimeString()}
-            </Text>
-          </Flex>
         </div>
       </Card>
     </div>

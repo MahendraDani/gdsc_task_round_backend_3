@@ -4,7 +4,6 @@ export type Todo = {
   completed: string;
   id: string;
   userId: string;
-  created_at: Date;
 };
 
 export type User = {
