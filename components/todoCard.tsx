@@ -5,7 +5,6 @@ import { Pencil1Icon, TrashIcon } from "@radix-ui/react-icons"
 import { DeleteTodoComponent } from "./deleteTodoComponent";
 import { DeleteTodoAction } from "@/actions/deleteTodoAction";
 import { EditTodoComponent } from "./editTodoComponent";
-import { Suspense } from "react";
 
 interface TodoCardProps {
   title: string;

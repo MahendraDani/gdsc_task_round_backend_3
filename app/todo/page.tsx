@@ -8,8 +8,11 @@ import { Todo } from "@/lib/types";
 import { TodoCard } from "@/components/todoCard";
 import { createTodoAction } from "@/actions/createTodoAction";
 import { CreateTodoForm } from "@/components/createTodoForm";
+import { Suspense } from "react";
+import { unstable_noStore } from "next/cache";
 
 export default async function ProtectedPage() {
+  unstable_noStore();
   const { getUser, isAuthenticated } = getKindeServerSession();
   const isAuthed = await isAuthenticated();
 
@@ -62,18 +65,20 @@ export default async function ProtectedPage() {
           <Box px="4" pt="3" pb="2" mt='5'>
 
             <TabsContent value="Tasks">
-              <Flex direction={{
-                initial: "column",
-                sm: 'row'
-              }} gap='4' wrap='wrap' align='center'>
-                {incompleteTodos.length === 0 ? <Flex align='center' justify='center' direction='column' className="">
-                  <Heading>{"It seems that you don't have any todos yet! Please create todos first"}</Heading>
-                </Flex> : incompleteTodos.reverse().map((todo: Todo) => {
-                  return (
-                    <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
-                  )
-                })}
-              </Flex>
+              <Suspense fallback={<h1>LOADING .....</h1>}>
+                <Flex direction={{
+                  initial: "column",
+                  sm: 'row'
+                }} gap='4' wrap='wrap' align='center'>
+                  {incompleteTodos.length === 0 ? <Flex align='center' justify='center' direction='column' className="">
+                    <Heading>{"It seems that you don't have any todos yet! Please create todos first"}</Heading>
+                  </Flex> : incompleteTodos.reverse().map((todo: Todo) => {
+                    return (
+                      <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
+                    )
+                  })}
+                </Flex>
+              </Suspense>
             </TabsContent>
 
 
