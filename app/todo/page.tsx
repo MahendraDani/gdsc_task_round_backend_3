@@ -74,7 +74,7 @@ export default async function ProtectedPage() {
                     <Heading>{"It seems that you don't have any todos yet! Please create todos first"}</Heading>
                   </Flex> : incompleteTodos.reverse().map((todo: Todo) => {
                     return (
-                      <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
+                      <TodoCard key={todo.id} created_at={todo.created_at} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
                     )
                   })}
                 </Flex>
@@ -91,7 +91,7 @@ export default async function ProtectedPage() {
                   <Heading>{"It seems that you don't have any todos yet! Please create todos first"}</Heading>
                 </Flex> : completedTodos.reverse().map((todo: Todo) => {
                   return (
-                    <TodoCard key={todo.id} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
+                    <TodoCard key={todo.id} created_at={todo.created_at} id={todo.id} title={todo.title} description={todo.description} completed={todo.completed ? "done" : "todo"} />
                   )
                 })}
               </Flex>
