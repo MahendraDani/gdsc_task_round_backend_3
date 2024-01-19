@@ -36,10 +36,10 @@ export const TodoCard = ({ title, description, completed, id, created_at }: Todo
           </Text>
           <Flex direction={"row"} justify={"between"} align={"center"} gap={'2'} mt={'1'}>
             <Text as="div" color="gray" size="1">
-              {date ? date.toLocaleDateString() : ""}
+              {date.toLocaleDateString()}
             </Text>
             <Text as="div" color="gray" size="1">
-              {date ? date.toLocaleDateString() : ""}
+              {date.toLocaleTimeString()}
             </Text>
           </Flex>
         </div>
